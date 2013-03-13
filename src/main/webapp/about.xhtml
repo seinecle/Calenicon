@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Calenicon</title>
+        <h:outputStylesheet library="css" name="index.css" />
+
+    </h:head>
+    <h:body>
+        <div id="box" style="font-size: 95%;">
+
+            
+            <div id="text">
+                <br><b>(disclaimer: this app is in early beta!)</b></br>
+                <p><a href="http://www.nesshi.eu">NESSHI</a> is a European research project involving scientists from the social science, the humanities and the neuroscience.</p>
+                <p>One of NESSHI's goals is to study empirically the growing influence of neuroscience in society. To this end, one sub projects of NESSHI consisted in tracing the presence of
+                    "neuro-objects" (the brain, neuroimaging devices...) in popular media.<br></br>
+                    So far, 2 Dutch newspapers have been sampled and photographed over a period covering 1987-2011.</p>
+                <p>We collected so far about 1,500 pictures and plan for a possible extension of the data collection effort. But we already need to plan for the most adequate way to inspect, share, edit, and preserve the data to the best standards.</p>
+                <p>It appeared that no off-the-shelves solution exist for these specifications. We conducted an attentive watch of the recent developments in the open data and linked data movements to find the building blocks that would meet our needs.</p>
+                <p>1. OPEN ACCESS, OPEN DATA: The creation of open repositories is one of the notable recent achievements of these movements.<br></br>
+                    <a href="http://figshare.com">Figshare</a>, <a href="http://thedata.org">Dataverse</a> and <a href="http://ckan.org">CKAN</a> are three platforms providing free and permanent, and high standard hosting of datasets for scholarly research.<br></br>
+                    We chose CKAN primarily because it offers the permanent referencing of individual resources, not just the full dataset.<br></br>
+                    In our case, this feature is particularly important as we need to cite and refer to individual pictures, not just to the full album of photographs.</p>
+                <p>2. METADATA, LINKED DATA: <a href="http://www.loc.gov/standards/vracore/">VRACore</a> is a joint initiative by Adobe, the Library of Congress to develop a "data standard for the description of works of visual culture as well as the images that document them".<br></br>
+                    We use VRACore to describe our visuals as it presents a perfect opportunity to standardize our metadata, making it easier to re-use our dataset by anyone for future research</p>
+
+                <p><b>Interested by this app for your own visuals? Send your feedback to <a href="http://twitter.com/seinecle" target="_blank">@seinecle</a>.</b><br/>
+
+                [I am <a href="http://www.clementlevallois.net" target="_blank">Clement Levallois</a>. App created in January 2013.
+                Are you a web designer? Get in touch, we could make this app much nicer.]</p>
+                
+                <b>credits:</b><br></br>
+                This app was created entirely with free, open source material. Thanks to the community.
+                <br></br>
+                <br></br>
+                background texture: <a href="http://subtlepatterns.com/paper/" target="_blank">paper</a>, by <a href="http://timeproduction.ru/" target="_blank">Blaq Annabiosis</a>.
+                <br></br>
+                API access to CKAN: <a href="https://github.com/okfn/ckanclient-j" target="_blank">CKanClient-J</a>, by <a href="https://github.com/rossjones" target="_blank">Jon Ross</a>.
+                <br></br>
+                front-end design: <a href="http://www.primefaces.org/" target="_blank">Primefaces</a>.
+                <br></br>
+                back-end: <a href="http://www.oracle.com/technetwork/java/javaee/javaserverfaces-139869.html" target="_blank">Java Server Faces</a> running on <a href="http://tomcat.apache.org/" target="_blank">TomCat</a>.
+                <br></br>
+                <br></br>
+
+                <b>source code:</b><br></br>
+                Available on <a href="https://github.com/seinecle/Calenicon" target="_blank">Github</a>.
+                
+                
+
+            </div>
+
+        </div>
+        <h:link value="{back to home page}" outcome="index.xhtml" />
+        <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-37012233-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+
+        </script>
+    </h:body>
+</html>
+

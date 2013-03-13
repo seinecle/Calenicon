@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title> Calenicon</title>
+        <h:outputStylesheet library="css" name="index.css" />
+    </h:head>
+    <h:body>
+        <div id="box">
+            <div id="text">
+                <div id="appTitle">Calenicon</div>
+                <div id="subtitle">Inspect, edit, share and archive visual documents</div>
+                <br />
+                <h:form>
+                    1. Enter the name of an existing dataset on datahub.io:
+                    <br></br>
+                    <h:inputText value="#{controllerBean.dataset}"/>                    <i>(try: "calenicon-example-dataset")</i>
+
+                    <br />
+                    <br />
+                    <br />
+                    2. Enter your API key for datahubIO:
+                    <br></br>
+                    <h:inputText value="#{controllerBean.apiKey}"/>
+                    <br />
+                    <i>(only necessary for datasets which require special authorization).
+                        <br/>
+                        your API key is situated in the profile details of your datahub.io account. See <a href="http://clementlevallois.net/download/screenshotAPI.png">this illustrative example</a></i><br />
+                    <br />
+                    3. <h:commandLink action="#{controllerBean.getDatasetFromCKAN}" value="Cick here to view the dataset" />
+                </h:form>
+            </div>
+        </div>
+        <h:link value="{why this app?}" outcome="about.xhtml" />
+    </h:body>
+
+    <h:head>
+        <title>Calenicon</title>
+    </h:head>
+    <h:body>
+
+    </h:body>
+
+</html>
+

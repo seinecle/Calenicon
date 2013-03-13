@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Gallery</title>
+        <h:outputStylesheet name="css/galleria.css" />
+
+    </h:head>
+    <h:body>
+        <style type="text/css">
+            .large {
+                width: 250px; height: 250px;
+                position: absolute;
+                border-radius: 100%;
+
+                /*Multiple box shadows to achieve the glass effect*/
+                box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.85), 
+                    0 0 7px 7px rgba(0, 0, 0, 0.25), 
+                    inset 0 0 40px 2px rgba(0, 0, 0, 0.25);
+
+                /*Lets load up the large image first*/
+                background: url('#{galleriaDatahubBean.resource.url}') no-repeat;
+
+                /*hide the glass by default*/
+                display: none;
+            }
+
+        </style>
+
+        <div style="position: absolute;
+             right: 15px;
+             z-index: 999;">
+            <h:link value="{why this app?}" outcome="about.xhtml" />
+        </div>
+        <div style=" margin-left: 25px; float: left; width:410px; border: 1px solid rgb(213,213,213);">
+            <h:outputText styleClass="ui-widget"  value="Title of the pic: #{galleriaDatahubBean.resource.name}" escape="false" />
+            <br></br>
+            <h:form>
+                <h:outputLink style="font-size: 90%;" value="#{galleriaDatahubBean.linkOnCKAN}">Visit the original pic on datahub.io</h:outputLink>
+                <br></br>
+                (#{galleriaDatahubBean.nbVisiblePics} pictures in this dataset)
+            </h:form>
+            <div class="magnify">
+                <div class="large"></div>
+                <img class="small" src="#{galleriaDatahubBean.resource.url}" width="600"/>
+            </div>
+        </div>
+
+
+        <h:form id ="formId">
+
+            <div>
+                <div class="caption">
+                    <h:outputText value="see all files, including the ones set to invisible: " />
+                    <h:selectBooleanCheckbox value="#{galleriaDatahubBean.allPicsVisible}"/>
+
+
+                    <br/>
+                    <br/>
+                    **** <i>1. safe zone / click these buttons to navigate between pictures</i>****
+                    <br/>
+
+                    <h:commandButton value="forget changes and previous" title="don't save, previous picture" action="#{galleriaDatahubBean.previousAndForget}"/>
+                    <h:commandButton value="forget changes and next" title="don't save, next picture" action="#{galleriaDatahubBean.nextAndForget}"/>
+                    <h:outputText value="   " />
+                    <p:inputText value="#{galleriaDatahubBean.jumpName}"/><h:commandButton value="jump to pic" title="jump to pic" action="#{galleriaDatahubBean.jump}"/>
+                    <br/>
+                    <br/>
+
+                    **** <i>2. edit zone / clicking these buttons will modify the records</i>****
+                    <br/>
+
+                    <h:commandButton value="save and next" title="save, go to next picture" action="#{galleriaDatahubBean.next}"/>
+                    <br/>
+                    <h:commandButton value="attach this pic to the *previous* one" title="merge with prev" action="#{galleriaDatahubBean.relatesToPrevious}"/>
+                    <h:commandButton value="attach this pic to the *next* one" title="merge with next" action="#{galleriaDatahubBean.relatesToNext}"/>
+                    <br/>
+                    <br/>
+                    Related pictures for the same document:
+                    <br/>
+                    <br/>
+                    <h:outputText value ="#{galleriaDatahubBean.relatedPics}" escape="false"></h:outputText>
+                    <br/>
+                </div>
+                <div style="margin-left: 446px; width:1200px;">
+                    <div style=" margin-left: 25px; float: left; border: 1px solid rgb(213,213,213);">
+                        <p:dataTable id ="dataIdVRACore" value ="#{galleriaDatahubBean.listPropertiesVRACore}" var ="m" scrollable ="true" scrollHeight="450" style="width:405px; font-size:80%" editable="true">
+                            <f:facet name="header">
+                                VRACore properties
+                            </f:facet>
+                            <p:column style="width:50px;">
+                                <h:outputText value="#{m.tag}" style="text-align: center;"/>
+                            </p:column>
+
+                            <p:column style="width:180px;">
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{m.value}" style="text-align: center;" escape="false"/>  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <p:inputText value="#{m.valueEdited}" style="text-align: left;"/>  
+                                    </f:facet>  
+                                </p:cellEditor> 
+                            </p:column>
+                            <p:column style="width:20px;">  
+                                <p:rowEditor />  
+                            </p:column>
+                        </p:dataTable>
+                    </div>
+                    <div style=" margin-left: 15px; float: left; border: 1px solid rgb(213,213,213);"> 
+                        <p:dataTable id ="dataIdNESSHI" value ="#{galleriaDatahubBean.listPropertiesNESSHI}" var ="m" scrollable ="true" scrollHeight="450" style="width:405px; font-size:80%" editable="true">
+                            <f:facet name="header">
+                                NESSHI properties
+                            </f:facet>
+                            <p:column style="width:50px;">
+                                <h:outputText value="#{m.tag}" style="text-align: center;width:50px"/>
+                            </p:column>
+
+                            <p:column style="width:180px;">
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{m.value}" style="text-align: left;" escape="false"/>  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <p:inputText value="#{m.valueEdited}" style="text-align: left;"/>  
+                                    </f:facet>  
+                                </p:cellEditor> 
+                            </p:column>
+                            <p:column style="width:20px;">  
+                                <p:rowEditor/>  
+                            </p:column>
+                        </p:dataTable>
+                    </div>
+                </div>
+
+            </div>
+
+        </h:form>
+
+        <script type="text/javascript">
+            //<![CDATA[
+            $(document).ready(function() {
+
+                var native_width = 0;
+                var native_height = 0;
+
+                //Now the mousemove function
+                $(".magnify").mousemove(function(e) {
+                    //When the user hovers on the resource, the script will first calculate
+                    //the native dimensions if they don't exist. Only after the native dimensions
+                    //are available, the script will show the zoomed version.
+                    if (!native_width && !native_height)
+                    {
+                        //This will create a new resource object with the same resource as that in .small
+                        //We cannot directly get the dimensions from .small because of the 
+                        //width specified to 200px in the html. To get the actual dimensions we have
+                        //created this resource object.
+                        var resource_object = new Image();
+                        resource_object.src = $(".small").attr("src");
+
+                        //This code is wrapped in the .load function which is important.
+                        //width and height of the object would return 0 if accessed before 
+                        //the resource gets loaded.
+                        native_width = resource_object.width;
+                        native_height = resource_object.height;
+                    }
+                    else
+                    {
+                        //x/y coordinates of the mouse
+                        //This is the position of .magnify with respect to the document.
+                        var magnify_offset = $(this).offset();
+                        //We will deduct the positions of .magnify from the mouse positions with
+                        //respect to the document to get the mouse positions with respect to the 
+                        //container(.magnify)
+                        var mx = e.pageX - magnify_offset.left;
+                        var my = e.pageY - magnify_offset.top;
+
+                        //Finally the code to fade out the glass if the mouse is outside the container
+                        if (mx < $(this).width() && my < $(this).height() && mx > 0 && my > 0)
+                        {
+                            $(".large").fadeIn(100);
+                        }
+                        else
+                        {
+                            $(".large").fadeOut(100);
+                        }
+                        if ($(".large").is(":visible"))
+                        {
+                            //The background position of .large will be changed according to the position
+                            //of the mouse over the .small resource. So we will get the ratio of the pixel
+                            //under the mouse pointer with respect to the resource and use that to position the 
+                            //large resource inside the magnifying glass
+                            var rx = Math.round(mx / $(".small").width() * native_width - $(".large").width() / 2) * -1;
+                            var ry = Math.round(my / $(".small").height() * native_height - $(".large").height() / 2) * -1;
+                            var bgp = rx + "px " + ry + "px";
+
+                            //Time to move the magnifying glass with the mouse
+                            var px = mx - $(".large").width() / 2;
+                            var py = my - $(".large").height() / 2;
+                            //Now the glass moves with the mouse
+                            //The logic is to deduct half of the glass's width and height from the 
+                            //mouse coordinates to place it with its center at the mouse coordinates
+
+                            //If you hover on the resource now, you should see the magnifying glass in action
+                            $(".large").css({left: px, top: py, backgroundPosition: bgp});
+                        }
+                    }
+                })
+            })
+            //]]>
+        </script>
+        <script src="http://thecodeplayer.com/uploads/js/prefixfree.js" type="text/javascript"></script>
+    </h:body>
+</html>
+

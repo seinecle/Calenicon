@@ -1,0 +1,27 @@
+/* 
+    Document   : galleria
+    Created on : Jan 16, 2013, 3:47:37 PM
+    Author     : C. Levallois
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/*Some CSS*/
+* {margin: 0; padding: 0;}
+.magnify {width: 350px; margin: 50px auto; position: relative;}
+
+/*Lets create the magnifying glass*/
+
+/*To solve overlap bug at the edges during magnification*/
+.small { display: block;
+         width:300px;
+}
+
+.caption {
+    position: relative;
+    padding: 20px;
+    background: rgb(241, 241, 241);
+    width: 787px;
+    margin: 24px 0 25px 473px;
+    box-shadow: 0 0 12px 4px #CCC;
+}
